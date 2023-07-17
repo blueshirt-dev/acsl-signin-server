@@ -4,6 +4,7 @@ require "email"
 puts "Local: #{Time.local}, UTC: #{Time.utc}"
 totalMinutes = 0
 names = 0
+emails = [] of String
 lastWeek = Time.utc - 7.days
 puts "#{lastWeek}"
 DB.open "sqlite3://./data.db" do |db|
@@ -32,6 +33,11 @@ DB.open "sqlite3://./data.db" do |db|
             puts "Unique names: #{names}"
         end
     end
+    db.query("select distinct email from signin where email_acceptable = ?", 1) do |rs|
+        rs.each do 
+            emails.push(rs.read(String))
+        end
+    end
 end
 
 puts "Hours: #{(totalMinutes/60).format(decimal_places: 2)}"
@@ -46,6 +52,7 @@ email.subject "Lab report for week of #{lastWeek.date}"
 email.message <<-EOM
     Unique Names: #{names}
     Total Hours: #{(totalMinutes/60).format(decimal_places: 2)}
+    Email List: #{emails}
     EOM
 
 # Set SMTP client configuration
