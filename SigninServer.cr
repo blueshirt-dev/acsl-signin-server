@@ -44,7 +44,7 @@ DB.open "sqlite3://./data.db" do |db|
       emailAcceptable = false
     end
     insertSignin(db, name, email, emailAcceptable, Time.utc)
-    render "public/success.html"
+    render "public/index.html"
   end
 
   dbSetup

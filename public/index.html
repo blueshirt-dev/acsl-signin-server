@@ -90,7 +90,8 @@
         /* The Modal (background) */
         
         .modal {
-            display: none;
+            /* display: block; */
+            animation: both 4s;
             /* Hidden by default */
             position: fixed;
             /* Stay in place */
@@ -138,27 +139,31 @@
         }
         /* Add Zoom Animation */
         
-        .animate {
-            -webkit-animation: animatezoom 0.6s;
-            animation: animatezoom 0.6s
-        }
-        
-        @-webkit-keyframes animatezoom {
-            from {
-                -webkit-transform: scale(0)
+        @-webkit-keyframes fadeOutWeb {
+            0% {
+                opacity: 1;
+                display: block;
             }
-            to {
-                -webkit-transform: scale(1)
+            100% {
+                opacity: 0;
+                display: none;
             }
         }
         
-        @keyframes animatezoom {
-            from {
-                transform: scale(0)
+        @keyframes fadeOutKey {
+            0% {
+                opacity: 1;
+                display: block;
             }
-            to {
-                transform: scale(1)
+            100% {
+                opacity: 0;
+                display: none;
             }
+        }
+        
+        .fadeOut {
+            -webkit-animation-name: fadeOutWeb;
+            animation-name: fadeOutKey;
         }
         /* Change styles for span and cancel button on extra small screens */
         
@@ -184,7 +189,7 @@
     <div id="userInfo" class="container">
         <form class="container" method="post">
             <label for="name"><b>Name</b></label>
-            <input type="text" placeholder="Enter Name" name="name" required>
+            <input type="text" autofocus="autofocus" placeholder="Enter Name" name="name" required>
 
             <label for="email"><b>Email</b></label>
             <input type="text" placeholder="Enter Email" name="email">
@@ -197,7 +202,7 @@
 
         </form>
     </div>
-    <div id="id01" class="modal">
+    <div id="id01" class="modal fadeOut">
         <div class="container" style="background-color:#f1f1f1">
             <label><b>Thank you for signing in</b></label>
         </div>
