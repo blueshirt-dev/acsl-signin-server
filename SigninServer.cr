@@ -4,7 +4,7 @@ require "sqlite3"
 def dbSetup
   puts "DBSetup"
   
-  DB.open "sqlite3://./data.db" do |db|
+  DB.open "sqlite3://./data/data.db" do |db|
     begin
       db.exec "create table if not exists signin (
         signin_skey integer primary key asc autoincrement,
@@ -27,7 +27,7 @@ def insertSignin(db : DB::Database, name : String, email : String, emailAcceptab
   db.exec "insert into signin (name, email, email_acceptable, time) values (?, ?, ?, ?)", name, email, emailAcceptable, time
 end
 
-DB.open "sqlite3://./data.db" do |db|
+DB.open "sqlite3://./data/data.db" do |db|
   # Matches GET "http://host:port/"
   get "/" do
     render "public/index.html"

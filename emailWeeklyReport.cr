@@ -7,7 +7,7 @@ names = 0
 emails = [] of String
 lastWeek = Time.utc - 7.days
 puts "#{lastWeek}"
-DB.open "sqlite3://./data.db" do |db|
+DB.open "sqlite3://./data/data.db" do |db|
     db.query("select name, time from signin where time > ? order by time asc", lastWeek) do |rs|
         # puts "#{rs.column_name(0)} (#{rs.column_name(1)})"
         rs.each do
@@ -47,7 +47,7 @@ from = "from@from.net"
 
 email = EMail::Message.new
 email.from    from
-email.to      "to@to.com"
+email.to      ["email1@email.net", "email2@email.net"]
 email.subject "Lab report for week of #{lastWeek.date}"
 email.message <<-EOM
     Unique Names: #{names}
