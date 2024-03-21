@@ -36,5 +36,10 @@ sudo docker build -f server.dockerfile -t acsl-signin-server .
 sudo docker build -f report.dockerfile -t acsl-weekly-report .
 
 sudo docker run --detach --publish 3000:3000 --mount source=signin,target=/app/data acsl-signin-server
-sudo docker run --mount source=signin,target=/app/data acsl-weekly-report 
+sudo docker run --detach --mount source=signin,target=/app/data acsl-weekly-report 
+```
+
+To create the tar for portainer
+```bash
+tar -cvf acsl-signin-server.tar *
 ```
