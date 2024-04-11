@@ -43,3 +43,8 @@ To create the tar for portainer
 ```bash
 tar -cvf acsl-signin-server.tar *
 ```
+
+With the compose file instead of the four docker commands above, the command below can be run. 
+```bash
+sudo docker compose up --build
+```

@@ -1,0 +1,18 @@
+services:
+  signin:
+    build: 
+      context: .
+      dockerfile: server.dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - signin:/app/data
+  report:
+    build: 
+      context: .
+      dockerfile: report.dockerfile
+    volumes:
+      - signin:/app/data
+
+volumes:
+  signin: {}
