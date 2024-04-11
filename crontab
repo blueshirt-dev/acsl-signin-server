@@ -9,6 +9,6 @@
 # *  *  *  *  * user-name command to be executed
 
 * * * * * root date >/proc/1/fd/1 2>/proc/1/fd/2
-* * * * 1 root cd /app; crystal run emailWeeklyReport.cr >/proc/1/fd/1 2>/proc/1/fd/2
+0 0 * * 0 root cd /app; crystal run emailWeeklyReport.cr >/proc/1/fd/1 2>/proc/1/fd/2
 
 # An empty line is required at the end of this file for a valid cron file.
